@@ -260,5 +260,6 @@ int check_type(void) {
     // else {
     //     return IDENTIFIER;
     // }
+    yylval.name = strdup(yytext);
     return IDENTIFIER;
 }

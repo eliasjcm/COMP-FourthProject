@@ -135,8 +135,8 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 48 "parserBison.y"
-char* token;
+#line 49 "parserBison.y"
+char* name;
 
 #line 142 "parserBison.tab.h"
 

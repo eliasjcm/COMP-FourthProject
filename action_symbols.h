@@ -12,5 +12,5 @@ void save_type();
 
 void save_id();
 
-void check_declaration();
+void check_declaration(char* name);
 #endif

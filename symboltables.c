@@ -98,13 +98,19 @@ int exists(char* name) {
     if (symbolTable == NULL) {
         return 0;
     }
+    int symbolTable_idx = 0;
     while (symbolTable) {
         for (int i = 0; i < symbolTable->nullsym; i++) {
             if (strcmp(symbolTable->symbols[i].lexeme, name) == 0) {
-                return 1;
+                if (symbolTable_idx == 0) {
+                    return 1;
+                } else {
+                    return 2;
+                }
             }
         }
         symbolTable = symbolTable->next;
+        symbolTable_idx++;
     }
     return 0;
     // for (int i = 0 ; i < symbolTable->nullsym; i++){

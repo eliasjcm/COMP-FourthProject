@@ -24,7 +24,8 @@ int customError(const char* str);
 }
 
 
-%token	IDENTIFIER INTEGER_CONSTANT FLOATING_CONSTANT STRING_LITERAL FUNC_NAME SIZEOF
+%token 	<name> IDENTIFIER
+%token	INTEGER_CONSTANT FLOATING_CONSTANT STRING_LITERAL FUNC_NAME SIZEOF
 %token	PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
 %token	AND_OP OR_OP MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN ADD_ASSIGN
 %token	SUB_ASSIGN LEFT_ASSIGN RIGHT_ASSIGN AND_ASSIGN
@@ -45,7 +46,7 @@ int customError(const char* str);
 %nonassoc ELSE
 
 %start translation_unit
-%union {char* token;}
+%union {char* name;}
 
 %define parse.lac full
 %define parse.error custom
@@ -55,7 +56,7 @@ int customError(const char* str);
 %%
 
 primary_expression
-	: IDENTIFIER {printf("USING IDENTIFIER\n"); check_declaration();}
+	: IDENTIFIER {printf("USING IDENTIFIER\n"); check_declaration($1);}
 	| constant
 	| string
 	| '(' expression ')'
@@ -210,7 +211,7 @@ conditional_expression
 
 assignment_expression
 	: conditional_expression
-	| unary_expression assignment_operator assignment_expression {printf("ABIEL TODAVIA MAS MECO\n");}
+	| unary_expression assignment_operator assignment_expression {printf("ABIEL TODAVIA MAS MECO3\n");}
 	| error ';'
 	;
 
@@ -266,7 +267,7 @@ init_declarator_list
 init_declarator
 	: declarator '=' initializer {printf("ABIEL MECO\n");}
 	| declarator
-	| error '=' initializer {printf("ABIEL MECO\n");}
+	| error '=' initializer {printf("ABIEL MECO2\n");}
 	;
 
 storage_class_specifier
@@ -546,7 +547,6 @@ compound_statement
 	;
 
 
-
 block_item_list
 	: block_item //{print_symboltables();}
 	| block_item_list block_item //{printf("INSIDE COMPOUND\n");}
@@ -575,10 +575,10 @@ selection_statement
 iteration_statement
 	: WHILE '(' expression ')' statement
 	| DO statement WHILE '(' expression ')' ';'
-	| FOR '(' expression_statement expression_statement ')' statement
-	| FOR '(' expression_statement expression_statement expression ')' statement
-	| FOR '(' declaration expression_statement ')' statement
-	| FOR '(' declaration expression_statement expression ')' statement
+	| FOR prepare_scope '(' expression_statement expression_statement ')' finish_scope statement
+	| FOR prepare_scope '(' expression_statement expression_statement expression ')' finish_scope statement
+	| FOR prepare_scope '(' declaration expression_statement ')' finish_scope statement
+	| FOR prepare_scope '(' declaration expression_statement expression ')' finish_scope statement
 	| DO error WHILE '(' expression ')' ';' 
   	| FOR '(' error ')' statement 
 	;
@@ -593,7 +593,7 @@ jump_statement
 	;
 
 translation_unit
-	: external_declaration
+	: prepare_scope external_declaration finish_scope
 	| translation_unit external_declaration
 	;
 
