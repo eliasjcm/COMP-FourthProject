@@ -11,4 +11,6 @@ void close_scope();
 void save_type();
 
 void save_id();
+
+void check_declaration();
 #endif

@@ -55,7 +55,7 @@ int customError(const char* str);
 %%
 
 primary_expression
-	: IDENTIFIER
+	: IDENTIFIER {printf("USING IDENTIFIER\n"); check_declaration();}
 	| constant
 	| string
 	| '(' expression ')'
@@ -210,7 +210,7 @@ conditional_expression
 
 assignment_expression
 	: conditional_expression
-	| unary_expression assignment_operator assignment_expression
+	| unary_expression assignment_operator assignment_expression {printf("ABIEL TODAVIA MAS MECO\n");}
 	| error ';'
 	;
 
@@ -264,9 +264,9 @@ init_declarator_list
 	;
 
 init_declarator
-	: declarator '=' initializer {printf("ALEBE MECO\n");}
+	: declarator '=' initializer {printf("ABIEL MECO\n");}
 	| declarator
-	| error '=' initializer
+	| error '=' initializer {printf("ABIEL MECO\n");}
 	;
 
 storage_class_specifier
@@ -358,9 +358,9 @@ enumerator_list
 	;
 
 enumerator
-	: enumeration_constant '=' {printf("ALEBE MECO\n");} constant_expression
+	: enumeration_constant '=' {printf("ABIEL MECO\n");} constant_expression
 	| enumeration_constant
-	| error '=' constant_expression
+	| error '=' constant_expression  {printf("ABIEL MECO\n");}
 	;
 	
 type_qualifier
@@ -498,7 +498,7 @@ initializer_list
 	;
 
 designation
-	: designator_list '=' 
+	: designator_list '='  {printf("ABIEL MECO\n");}
 	;
 
 designator_list

@@ -62,3 +62,12 @@ void end_declaration() {
     pop_semanticRegister();
     print_semantic_stack();
 }
+
+void check_declaration() {
+    char* id = malloc(strlen(yytext) + 1);
+    strcpy(id, yytext);
+
+    if (!exists(id)) {
+        printf("\n\n🤬🤬🤬🤬🤬 VARIABLE %s NOT DECLARED 🤬🤬🤬🤬🤬🤬 \n\n", id);
+    }
+}

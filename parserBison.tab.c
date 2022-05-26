@@ -2961,152 +2961,182 @@ yyreduce:
     int yychar_backup = yychar;
     switch (yyn)
       {
+  case 2: /* primary_expression: IDENTIFIER  */
+#line 58 "parserBison.y"
+                     {printf("USING IDENTIFIER\n"); check_declaration();}
+#line 2968 "parserBison.tab.c"
+    break;
+
+  case 88: /* assignment_expression: unary_expression assignment_operator assignment_expression  */
+#line 213 "parserBison.y"
+                                                                     {printf("ABIEL TODAVIA MAS MECO\n");}
+#line 2974 "parserBison.tab.c"
+    break;
+
   case 105: /* $@1: %empty  */
 #line 242 "parserBison.y"
                                  {/* DONE, ENTRA A TYPE_SPECIFIER */}
-#line 2968 "parserBison.tab.c"
+#line 2980 "parserBison.tab.c"
     break;
 
   case 106: /* declaration: declaration_specifiers $@1 init_declarator_list ';'  */
 #line 242 "parserBison.y"
                                                                                                {end_declaration();}
-#line 2974 "parserBison.tab.c"
+#line 2986 "parserBison.tab.c"
     break;
 
   case 122: /* init_declarator: declarator '=' initializer  */
 #line 267 "parserBison.y"
-                                     {printf("ALEBE MECO\n");}
-#line 2980 "parserBison.tab.c"
+                                     {printf("ABIEL MECO\n");}
+#line 2992 "parserBison.tab.c"
+    break;
+
+  case 124: /* init_declarator: error '=' initializer  */
+#line 269 "parserBison.y"
+                                {printf("ABIEL MECO\n");}
+#line 2998 "parserBison.tab.c"
     break;
 
   case 125: /* storage_class_specifier: TYPEDEF  */
 #line 273 "parserBison.y"
                         {typedef_name_flag = 1;}
-#line 2986 "parserBison.tab.c"
+#line 3004 "parserBison.tab.c"
     break;
 
   case 131: /* type_specifier: VOID  */
 #line 282 "parserBison.y"
                {save_type();}
-#line 2992 "parserBison.tab.c"
+#line 3010 "parserBison.tab.c"
     break;
 
   case 132: /* type_specifier: CHAR  */
 #line 283 "parserBison.y"
                {save_type();}
-#line 2998 "parserBison.tab.c"
+#line 3016 "parserBison.tab.c"
     break;
 
   case 133: /* type_specifier: SHORT  */
 #line 284 "parserBison.y"
                 {save_type();}
-#line 3004 "parserBison.tab.c"
+#line 3022 "parserBison.tab.c"
     break;
 
   case 134: /* type_specifier: INT  */
 #line 285 "parserBison.y"
               {save_type();}
-#line 3010 "parserBison.tab.c"
+#line 3028 "parserBison.tab.c"
     break;
 
   case 135: /* type_specifier: LONG  */
 #line 286 "parserBison.y"
                {save_type();}
-#line 3016 "parserBison.tab.c"
+#line 3034 "parserBison.tab.c"
     break;
 
   case 136: /* type_specifier: FLOAT  */
 #line 287 "parserBison.y"
                 {save_type();}
-#line 3022 "parserBison.tab.c"
+#line 3040 "parserBison.tab.c"
     break;
 
   case 137: /* type_specifier: DOUBLE  */
 #line 288 "parserBison.y"
                  {save_type();}
-#line 3028 "parserBison.tab.c"
+#line 3046 "parserBison.tab.c"
     break;
 
   case 138: /* type_specifier: SIGNED  */
 #line 289 "parserBison.y"
                  {save_type();}
-#line 3034 "parserBison.tab.c"
+#line 3052 "parserBison.tab.c"
     break;
 
   case 139: /* type_specifier: UNSIGNED  */
 #line 290 "parserBison.y"
                    {save_type();}
-#line 3040 "parserBison.tab.c"
+#line 3058 "parserBison.tab.c"
     break;
 
   case 140: /* type_specifier: _BOOL  */
 #line 291 "parserBison.y"
                 {save_type();}
-#line 3046 "parserBison.tab.c"
+#line 3064 "parserBison.tab.c"
     break;
 
   case 141: /* type_specifier: _COMPLEX  */
 #line 292 "parserBison.y"
                    {save_type();}
-#line 3052 "parserBison.tab.c"
+#line 3070 "parserBison.tab.c"
     break;
 
   case 142: /* type_specifier: _IMAGINARY  */
 #line 293 "parserBison.y"
                      {save_type();}
-#line 3058 "parserBison.tab.c"
+#line 3076 "parserBison.tab.c"
     break;
 
   case 143: /* type_specifier: struct_or_union_specifier  */
 #line 294 "parserBison.y"
                                     {save_type();}
-#line 3064 "parserBison.tab.c"
+#line 3082 "parserBison.tab.c"
     break;
 
   case 144: /* type_specifier: enum_specifier  */
 #line 295 "parserBison.y"
                          {save_type();}
-#line 3070 "parserBison.tab.c"
+#line 3088 "parserBison.tab.c"
     break;
 
   case 145: /* type_specifier: TYPEDEF_NAME  */
 #line 296 "parserBison.y"
                        {save_type();}
-#line 3076 "parserBison.tab.c"
+#line 3094 "parserBison.tab.c"
     break;
 
   case 151: /* struct_or_union: STRUCT  */
 #line 308 "parserBison.y"
                  {typedef_name_flag = 4;}
-#line 3082 "parserBison.tab.c"
+#line 3100 "parserBison.tab.c"
     break;
 
   case 180: /* $@2: %empty  */
 #line 361 "parserBison.y"
-                                   {printf("ALEBE MECO\n");}
-#line 3088 "parserBison.tab.c"
+                                   {printf("ABIEL MECO\n");}
+#line 3106 "parserBison.tab.c"
+    break;
+
+  case 183: /* enumerator: error '=' constant_expression  */
+#line 363 "parserBison.y"
+                                         {printf("ABIEL MECO\n");}
+#line 3112 "parserBison.tab.c"
     break;
 
   case 194: /* direct_declarator: IDENTIFIER  */
 #line 389 "parserBison.y"
                      {save_id();}
-#line 3094 "parserBison.tab.c"
+#line 3118 "parserBison.tab.c"
+    break;
+
+  case 269: /* designation: designator_list '='  */
+#line 501 "parserBison.y"
+                               {printf("ABIEL MECO\n");}
+#line 3124 "parserBison.tab.c"
     break;
 
   case 284: /* prepare_scope: %empty  */
 #line 534 "parserBison.y"
          { open_scope(); }
-#line 3100 "parserBison.tab.c"
+#line 3130 "parserBison.tab.c"
     break;
 
   case 285: /* finish_scope: %empty  */
 #line 538 "parserBison.y"
          { print_symboltables(); close_scope(); }
-#line 3106 "parserBison.tab.c"
+#line 3136 "parserBison.tab.c"
     break;
 
 
-#line 3110 "parserBison.tab.c"
+#line 3140 "parserBison.tab.c"
 
         default: break;
       }
