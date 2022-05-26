@@ -108,5 +108,13 @@ void check_declaration(char* name) {
         char* errorMsg = malloc(strlen(name) + 50);
         sprintf(errorMsg, "'%s' undeclared (first use in this context)", name);
         print_error(name, line, original_filename, errorMsg, yylineno, position);
+
+        Symbol new_symbol;
+        new_symbol.lexeme = malloc(strlen(name) + 1);
+        strcpy(new_symbol.lexeme, name);
+        new_symbol.type = malloc(strlen("void") + 1);
+        strcpy(new_symbol.type, "void");
+        new_symbol.typeST = TYPE_IDENTIFIER;
+        insert_symbol(new_symbol);
     }
 }

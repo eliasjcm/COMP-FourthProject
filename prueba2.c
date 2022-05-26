@@ -1,5 +1,5 @@
-typedef int diogoJota;
-int perezona;
+// typedef int diogoJota;
+// int perezona;
 
 int main () {
     // printf("Que lo que ");
@@ -11,13 +11,18 @@ int main () {
     //     int jeropa = 0;
     // }
 
-    for (int meco = 3; meco < 3; meco++) {
-        printf("hello");
+    // int weno = 1 + popero + rapero + aleviejo;
+    // int weno = 1 + popero + rapero + aleviejo;
+    
+    int weno = 10;
+
+    for (int i=0; i < weno; i++) {
+        int 
     }
 
-    char* __x86_64;
+    // char* __x86_64;
     
-    char*   __x86_64 = "gutierrez";
+    // char*   __x86_64 = "gutierrez";
     // for (int i = 3; i < count; i++)
     // {
     //     /* code */

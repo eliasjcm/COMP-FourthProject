@@ -518,15 +518,15 @@ _STATIC_ASSERT_declaration
 
 statement
 	: labeled_statement
-	| compound_statement
+	| prepare_scope compound_statement finish_scope
 	| expression_statement
 	| selection_statement
-	| iteration_statement
+	| prepare_scope iteration_statement finish_scope
 	| jump_statement
 	;
 
 labeled_statement
-	: IDENTIFIER ':' statement
+	: IDENTIFIER ':' statement /* NOT USE, GO TO */
 	| CASE constant_expression ':' statement
 	| DEFAULT ':' statement
 	;
@@ -541,9 +541,9 @@ finish_scope:
 
 
 compound_statement
-	: prepare_scope '{' '}' finish_scope
-	| prepare_scope '{' block_item_list '}' finish_scope
-	| prepare_scope '{' error '}' finish_scope
+	: '{' '}'
+	| '{' block_item_list '}'
+	| '{' error '}'
 	;
 
 
@@ -573,14 +573,14 @@ selection_statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement
-	| DO statement WHILE '(' expression ')' ';'
-	| FOR prepare_scope '(' expression_statement expression_statement ')' finish_scope statement
-	| FOR prepare_scope '(' expression_statement expression_statement expression ')' finish_scope statement
-	| FOR prepare_scope '(' declaration expression_statement ')' finish_scope statement
-	| FOR prepare_scope '(' declaration expression_statement expression ')' finish_scope statement
-	| DO error WHILE '(' expression ')' ';' 
-  	| FOR '(' error ')' statement 
+	: WHILE '(' expression ')' statement {printf("Hola1\n");}
+	| DO statement WHILE '(' expression ')' ';' {printf("Hola2\n");}
+	| FOR '(' expression_statement expression_statement ')' statement {printf("Hola3\n");}
+	| FOR '(' expression_statement expression_statement expression ')' statement {printf("Hola4\n");}
+	| FOR '(' declaration expression_statement ')' statement {printf("Hola5\n");}
+	| FOR '(' declaration expression_statement expression ')' statement {printf("Hola6\n");}
+	| DO error WHILE '(' expression ')' ';'  {printf("Hola7\n");}
+  	| FOR '(' error ')' statement  {printf("Hola8\n");}
 	;
 
 jump_statement

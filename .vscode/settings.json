@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "semantic_stack.h": "c"
+        "*.lex": "lex",
+        "semantic_stack.h": "c",
+        "type_traits": "c"
     }
 }
