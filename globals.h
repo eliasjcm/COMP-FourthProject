@@ -4,22 +4,22 @@
 
 int typedef_name_flag;
 
-typedef struct symbol {
-    int type; 
-    char* lexeme; //yytext()
-} Symbol;
+// typedef struct symbol {
+//     int type; 
+//     char* lexeme; //yytext()
+// } Symbol;
 
-typedef struct symtable { 
-    int nullsym;
-    int size;
-    Symbol *symbols;
-} SymTable; 
+// typedef struct symtable { 
+//     int nullsym;
+//     int size;
+//     Symbol *symbols;
+// } SymTable; 
 
-SymTable symbolTable;
+// SymTable symbolTable;
 
-void add_symbol_to_symbolTable(Symbol symbol);
-int get_symbol_type(char* value);
-int get_symbol_idx (char* name);
+// void add_symbol_to_symbolTable(Symbol symbol);
+// int get_symbol_type(char* value);
+// int get_symbol_idx (char* name);
 
 // int get_ppid_idx (char* name);
 

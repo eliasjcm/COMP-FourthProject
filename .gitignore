@@ -4,4 +4,5 @@ parserNuevecito.output
 prueba.c
 parserC
 lex.yy.c
+preprocessor.yy.c
 temp*.c

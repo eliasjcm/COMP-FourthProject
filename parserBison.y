@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "globals.h"
+#include "action_symbols.h"
 extern int yylex();
 int yyerror();
 extern int yylineno; // borrar
@@ -44,6 +45,8 @@ int customError(const char* str);
 %nonassoc ELSE
 
 %start translation_unit
+%union {char* token;}
+
 %define parse.lac full
 %define parse.error custom
 %locations
@@ -235,8 +238,8 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';'
-	| declaration_specifiers init_declarator_list ';'
+	: declaration_specifiers ';' // CHECK THIS
+	| declaration_specifiers {/* DONE, ENTRA A TYPE_SPECIFIER */} init_declarator_list ';' {end_declaration();} 
 	| _STATIC_ASSERT_declaration
 	| declaration_specifiers error ';'
 	;
@@ -244,8 +247,8 @@ declaration
 declaration_specifiers
 	: storage_class_specifier declaration_specifiers
 	| storage_class_specifier
-	| type_specifier declaration_specifiers
-	| type_specifier
+	| type_specifier declaration_specifiers 
+	| type_specifier 
 	| type_qualifier declaration_specifiers
 	| type_qualifier
 	| function_specifier declaration_specifiers
@@ -261,7 +264,7 @@ init_declarator_list
 	;
 
 init_declarator
-	: declarator '=' initializer
+	: declarator '=' initializer {printf("ALEBE MECO\n");}
 	| declarator
 	| error '=' initializer
 	;
@@ -276,29 +279,29 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID
-	| CHAR
-	| SHORT
-	| INT
-	| LONG
-	| FLOAT
-	| DOUBLE
-	| SIGNED
-	| UNSIGNED
-	| _BOOL
-	| _COMPLEX
-	| _IMAGINARY
-	| struct_or_union_specifier
-	| enum_specifier
-	| TYPEDEF_NAME
+	: VOID {save_type();}
+	| CHAR {save_type();}
+	| SHORT {save_type();}
+	| INT {save_type();}
+	| LONG {save_type();}
+	| FLOAT {save_type();}
+	| DOUBLE {save_type();}
+	| SIGNED {save_type();}
+	| UNSIGNED {save_type();}
+	| _BOOL {save_type();}
+	| _COMPLEX {save_type();}
+	| _IMAGINARY {save_type();}
+	| struct_or_union_specifier {save_type();}
+	| enum_specifier {save_type();}
+	| TYPEDEF_NAME {save_type();}
 	;
 
 struct_or_union_specifier
-	: struct_or_union '{' struct_declaration_list '}'
-	| struct_or_union IDENTIFIER '{' struct_declaration_list '}'
-	| struct_or_union IDENTIFIER
-	| struct_or_union IDENTIFIER '{' error '}'
-  	| struct_or_union '{' error '}'
+	: struct_or_union prepare_scope '{' struct_declaration_list '}' finish_scope
+	| struct_or_union IDENTIFIER prepare_scope '{' struct_declaration_list '}' finish_scope
+	| struct_or_union IDENTIFIER 
+	| struct_or_union IDENTIFIER prepare_scope '{' error '}' finish_scope
+  	| struct_or_union prepare_scope '{' error '}' finish_scope
 	;
 
 struct_or_union
@@ -355,7 +358,7 @@ enumerator_list
 	;
 
 enumerator
-	: enumeration_constant '=' constant_expression
+	: enumeration_constant '=' {printf("ALEBE MECO\n");} constant_expression
 	| enumeration_constant
 	| error '=' constant_expression
 	;
@@ -383,7 +386,7 @@ declarator
 	;
 
 direct_declarator
-	: IDENTIFIER
+	: IDENTIFIER {save_id();}
 	| '(' declarator ')'
 	| direct_declarator '[' ']' 
 	| direct_declarator '[' '*' ']' 
@@ -495,7 +498,7 @@ initializer_list
 	;
 
 designation
-	: designator_list '='
+	: designator_list '=' 
 	;
 
 designator_list
@@ -527,20 +530,31 @@ labeled_statement
 	| DEFAULT ':' statement
 	;
 
+prepare_scope:
+  %empty { open_scope(); }
+;
+
+finish_scope:
+  %empty { print_symboltables(); close_scope(); }
+;
+
+
 compound_statement
-	: '{' '}'
-	| '{' block_item_list '}'
-	| '{' error '}'
+	: prepare_scope '{' '}' finish_scope
+	| prepare_scope '{' block_item_list '}' finish_scope
+	| prepare_scope '{' error '}' finish_scope
 	;
 
+
+
 block_item_list
-	: block_item
-	| block_item_list block_item
+	: block_item //{print_symboltables();}
+	| block_item_list block_item //{printf("INSIDE COMPOUND\n");}
 	;
 
 block_item
-	: declaration
-	| statement
+	: declaration 
+	| statement 
 	;
 
 expression_statement

@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/Eli02/OneDrive - Estudiantes ITCR/TEC5/COMP/Proyectos/Proyecto Programado 3/COMP-FourthProject'
+make: 'parserC' is up to date.
+make: Leaving directory '/mnt/c/Users/Eli02/OneDrive - Estudiantes ITCR/TEC5/COMP/Proyectos/Proyecto Programado 3/COMP-FourthProject'
+ 

@@ -17,6 +17,7 @@ extern char *lineptr;
 extern int yydebug;
 
 int main(int argc, char *argv[]) {
+    yydebug = 1;
     // printf("ERROR");
     int flags, opt;
     int nsecs, tfnd;
@@ -69,6 +70,9 @@ int main(int argc, char *argv[]) {
     FILE* check_file = fopen(original_filename, "r");
     if (check_file == NULL) {
         fprintf(stderr, "File %s not found\n", original_filename);
+        fprintf(stderr, 
+                usageInfo,
+                argv[0]);
         exit(EXIT_FAILURE);
     }
     // printf("name argument = %s\n", fileName);
@@ -80,9 +84,9 @@ int main(int argc, char *argv[]) {
     FILE* source_file = fopen(new_file_name, "r");
     yyin = source_file;
 
-    symbolTable.symbols = malloc(128 * sizeof(Symbol));
-    symbolTable.nullsym = 0;
-    symbolTable.size = 128;
+    // symbolTable.symbols = malloc(128 * sizeof(Symbol));
+    // symbolTable.nullsym = 0;
+    // symbolTable.size = 128;
     yyparse();
 
     exit(EXIT_SUCCESS);
