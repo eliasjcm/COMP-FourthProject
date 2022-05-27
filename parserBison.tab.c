@@ -3079,7 +3079,7 @@ yyreduce:
 
   case 153: /* struct_or_union: UNION  */
 #line 310 "parserBison.y"
-                {save_union();}
+                {save_union(); typedef_name_flag = 2;}
 #line 3084 "parserBison.tab.c"
     break;
 

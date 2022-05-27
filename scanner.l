@@ -264,6 +264,10 @@ int check_type(void) {
         typedef_name_flag = 0;
         yylval.struct_union_name = strdup(yytext);
         return STRUCT_ID;
+    } else if (typedef_name_flag == 2) {
+        typedef_name_flag = 0;
+        yylval.struct_union_name = strdup(yytext);
+        return STRUCT_ID;
     } else {
         return IDENTIFIER;
         yylval.name = strdup(yytext);

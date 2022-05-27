@@ -307,7 +307,7 @@ struct_or_union_specifier
 
 struct_or_union
 	: STRUCT {save_struct(); typedef_name_flag = 1;}
-	| UNION {save_union();}
+	| UNION {save_union(); typedef_name_flag = 2;} 
 	;
 
 struct_declaration_list
