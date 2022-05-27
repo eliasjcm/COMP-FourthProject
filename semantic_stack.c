@@ -79,6 +79,8 @@ SemanticRegister* get_top_semanticStack() {
     return semantic_stack.top;
 }
 
+
+
 // int main() {
 //     semantic_stack_init(semantic_stack);
 //     SemanticRegister *semantic_register;

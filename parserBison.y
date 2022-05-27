@@ -292,22 +292,22 @@ type_specifier
 	| _BOOL {save_type();}
 	| _COMPLEX {save_type();}
 	| _IMAGINARY {save_type();}
-	| struct_or_union_specifier {save_type();}
+	| struct_or_union_specifier
 	| enum_specifier {save_type();}
 	| TYPEDEF_NAME {save_type();}
 	;
 
 struct_or_union_specifier
 	: struct_or_union prepare_scope '{' struct_declaration_list '}' finish_scope
-	| struct_or_union IDENTIFIER prepare_scope '{' struct_declaration_list '}' finish_scope
-	| struct_or_union IDENTIFIER 
+	| struct_or_union IDENTIFIER {save_identifier_struct_union($2);} prepare_scope '{' struct_declaration_list '}' {finish_struct_union();} finish_scope
+	| struct_or_union IDENTIFIER {save_type();}//{save_identifier_struct_union($2);} 
 	| struct_or_union IDENTIFIER prepare_scope '{' error '}' finish_scope
   	| struct_or_union prepare_scope '{' error '}' finish_scope
 	;
 
 struct_or_union
-	: STRUCT {typedef_name_flag = 4;}
-	| UNION
+	: STRUCT {save_struct();}
+	| UNION {save_union();}
 	;
 
 struct_declaration_list
@@ -317,7 +317,7 @@ struct_declaration_list
 
 struct_declaration
 	: specifier_qualifier_list ';'
-	| specifier_qualifier_list struct_declarator_list ';'
+	| specifier_qualifier_list struct_declarator_list ';' {end_declaration();}
 	| _STATIC_ASSERT_declaration
 	| error ';'
 	;
@@ -518,7 +518,7 @@ _STATIC_ASSERT_declaration
 
 statement
 	: labeled_statement
-	| prepare_scope compound_statement finish_scope
+	| compound_statement
 	| expression_statement
 	| selection_statement
 	| prepare_scope iteration_statement finish_scope
@@ -541,9 +541,9 @@ finish_scope:
 
 
 compound_statement
-	: '{' '}'
-	| '{' block_item_list '}'
-	| '{' error '}'
+	: prepare_scope '{' '}' finish_scope
+	| prepare_scope '{' block_item_list '}' finish_scope
+	| prepare_scope '{' error '}' finish_scope
 	;
 
 
@@ -573,7 +573,7 @@ selection_statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement {printf("Hola1\n");}
+	: WHILE '(' expression ')' statement {printf("Hola1\n");} 
 	| DO statement WHILE '(' expression ')' ';' {printf("Hola2\n");}
 	| FOR '(' expression_statement expression_statement ')' statement {printf("Hola3\n");}
 	| FOR '(' expression_statement expression_statement expression ')' statement {printf("Hola4\n");}
@@ -594,7 +594,7 @@ jump_statement
 
 translation_unit
 	: prepare_scope external_declaration finish_scope
-	| translation_unit external_declaration
+	| translation_unit  external_declaration 
 	;
 
 external_declaration

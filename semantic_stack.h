@@ -7,7 +7,11 @@ typedef enum semantic_types
     TYPE,
     SMTYPE_ENUM,
     SMTYPE_FUNCTION,
-    SMTYPE_VARIABLE
+    SMTYPE_VARIABLE,
+    SMTYPE_UNION,
+    SMTYPE_STRUCT,
+    SMTYPE_STRUCT_ID,
+    SMTYPE_UNION_ID
 } SemanticType;
 
 struct semantic_register
@@ -32,7 +36,6 @@ void push_semanticRegister(SemanticRegister* semantic_register);
 
 void pop_semanticRegister();
 
-void end_declaration();
 
 SemanticRegister* get_top_semanticStack();
 

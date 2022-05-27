@@ -5,7 +5,9 @@ typedef enum symbol_type
 {
     TYPE_IDENTIFIER,
     TYPE_ENUM,
-    TYPE_STRUCT
+    TYPE_STRUCT,
+    TYPE_UNION,
+    TYPE_NAME
 } SymbolType;
 
 typedef struct symbol

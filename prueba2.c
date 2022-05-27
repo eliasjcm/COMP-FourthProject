@@ -2,6 +2,7 @@
 // int perezona;
 
 int main () {
+    int raul;
     // printf("Que lo que ");
     // int juan, pedro, abiel, alebecito = -1;
 
@@ -17,8 +18,14 @@ int main () {
     int weno = 10;
 
     for (int i=0; i < weno; i++) {
-        int 
+        int a = 1;
     }
+
+    // struct pedrito {
+    //     int julian;
+    //     int julian;
+
+    // };
 
     // char* __x86_64;
     
