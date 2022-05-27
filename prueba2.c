@@ -3,39 +3,14 @@
 
 int main () {
     int raul;
-    // printf("Que lo que ");
-    // int juan, pedro, abiel, alebecito = -1;
 
-    // int SUMATOTAL = juan - pedro;
-    
-    // {
-    //     int jeropa = 0;
-    // }
 
-    // int weno = 1 + popero + rapero + aleviejo;
-    // int weno = 1 + popero + rapero + aleviejo;
-    
-    int weno = 10;
+    struct STRUCT_TYPE {
+        int STRUCTPROP;
+        int STRUCTPROP;
+        struct STRUCT_TYPE pepito;
+    };
 
-    for (int i=0; i < weno; i++) {
-        int a = 1;
-    }
+    struct STRUCT_TYPE STRUCT_INSTANCE;
 
-    // struct pedrito {
-    //     int julian;
-    //     int julian;
-
-    // };
-
-    // char* __x86_64;
-    
-    // char*   __x86_64 = "gutierrez";
-    // for (int i = 3; i < count; i++)
-    // {
-    //     /* code */
-    //     struct alebecito {
-    //         int costo;
-    //     };
-    // }
-    
 }

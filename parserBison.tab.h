@@ -55,78 +55,79 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     IDENTIFIER = 258,              /* IDENTIFIER  */
-    INTEGER_CONSTANT = 259,        /* INTEGER_CONSTANT  */
-    FLOATING_CONSTANT = 260,       /* FLOATING_CONSTANT  */
-    STRING_LITERAL = 261,          /* STRING_LITERAL  */
-    FUNC_NAME = 262,               /* FUNC_NAME  */
-    SIZEOF = 263,                  /* SIZEOF  */
-    PTR_OP = 264,                  /* PTR_OP  */
-    INC_OP = 265,                  /* INC_OP  */
-    DEC_OP = 266,                  /* DEC_OP  */
-    LEFT_OP = 267,                 /* LEFT_OP  */
-    RIGHT_OP = 268,                /* RIGHT_OP  */
-    LE_OP = 269,                   /* LE_OP  */
-    GE_OP = 270,                   /* GE_OP  */
-    EQ_OP = 271,                   /* EQ_OP  */
-    NE_OP = 272,                   /* NE_OP  */
-    AND_OP = 273,                  /* AND_OP  */
-    OR_OP = 274,                   /* OR_OP  */
-    MUL_ASSIGN = 275,              /* MUL_ASSIGN  */
-    DIV_ASSIGN = 276,              /* DIV_ASSIGN  */
-    MOD_ASSIGN = 277,              /* MOD_ASSIGN  */
-    ADD_ASSIGN = 278,              /* ADD_ASSIGN  */
-    SUB_ASSIGN = 279,              /* SUB_ASSIGN  */
-    LEFT_ASSIGN = 280,             /* LEFT_ASSIGN  */
-    RIGHT_ASSIGN = 281,            /* RIGHT_ASSIGN  */
-    AND_ASSIGN = 282,              /* AND_ASSIGN  */
-    XOR_ASSIGN = 283,              /* XOR_ASSIGN  */
-    OR_ASSIGN = 284,               /* OR_ASSIGN  */
-    TYPEDEF_NAME = 285,            /* TYPEDEF_NAME  */
-    ENUMERATION_CONSTANT = 286,    /* ENUMERATION_CONSTANT  */
-    TYPEDEF = 287,                 /* TYPEDEF  */
-    EXTERN = 288,                  /* EXTERN  */
-    STATIC = 289,                  /* STATIC  */
-    AUTO = 290,                    /* AUTO  */
-    REGISTER = 291,                /* REGISTER  */
-    INLINE = 292,                  /* INLINE  */
-    CONST = 293,                   /* CONST  */
-    RESTRICT = 294,                /* RESTRICT  */
-    VOLATILE = 295,                /* VOLATILE  */
-    _BOOL = 296,                   /* _BOOL  */
-    CHAR = 297,                    /* CHAR  */
-    SHORT = 298,                   /* SHORT  */
-    INT = 299,                     /* INT  */
-    LONG = 300,                    /* LONG  */
-    SIGNED = 301,                  /* SIGNED  */
-    UNSIGNED = 302,                /* UNSIGNED  */
-    FLOAT = 303,                   /* FLOAT  */
-    DOUBLE = 304,                  /* DOUBLE  */
-    VOID = 305,                    /* VOID  */
-    _COMPLEX = 306,                /* _COMPLEX  */
-    _IMAGINARY = 307,              /* _IMAGINARY  */
-    STRUCT = 308,                  /* STRUCT  */
-    UNION = 309,                   /* UNION  */
-    ENUM = 310,                    /* ENUM  */
-    ELLIPSIS = 311,                /* ELLIPSIS  */
-    CASE = 312,                    /* CASE  */
-    DEFAULT = 313,                 /* DEFAULT  */
-    IF = 314,                      /* IF  */
-    ELSE = 315,                    /* ELSE  */
-    SWITCH = 316,                  /* SWITCH  */
-    WHILE = 317,                   /* WHILE  */
-    DO = 318,                      /* DO  */
-    FOR = 319,                     /* FOR  */
-    GOTO = 320,                    /* GOTO  */
-    CONTINUE = 321,                /* CONTINUE  */
-    BREAK = 322,                   /* BREAK  */
-    RETURN = 323,                  /* RETURN  */
-    _ALIGNAS = 324,                /* _ALIGNAS  */
-    _ALIGNOF = 325,                /* _ALIGNOF  */
-    _ATOMIC = 326,                 /* _ATOMIC  */
-    _GENERIC = 327,                /* _GENERIC  */
-    _NORETURN = 328,               /* _NORETURN  */
-    _STATIC_ASSERT = 329,          /* _STATIC_ASSERT  */
-    _THREAD_LOCAL = 330            /* _THREAD_LOCAL  */
+    STRUCT_ID = 259,               /* STRUCT_ID  */
+    INTEGER_CONSTANT = 260,        /* INTEGER_CONSTANT  */
+    FLOATING_CONSTANT = 261,       /* FLOATING_CONSTANT  */
+    STRING_LITERAL = 262,          /* STRING_LITERAL  */
+    FUNC_NAME = 263,               /* FUNC_NAME  */
+    SIZEOF = 264,                  /* SIZEOF  */
+    PTR_OP = 265,                  /* PTR_OP  */
+    INC_OP = 266,                  /* INC_OP  */
+    DEC_OP = 267,                  /* DEC_OP  */
+    LEFT_OP = 268,                 /* LEFT_OP  */
+    RIGHT_OP = 269,                /* RIGHT_OP  */
+    LE_OP = 270,                   /* LE_OP  */
+    GE_OP = 271,                   /* GE_OP  */
+    EQ_OP = 272,                   /* EQ_OP  */
+    NE_OP = 273,                   /* NE_OP  */
+    AND_OP = 274,                  /* AND_OP  */
+    OR_OP = 275,                   /* OR_OP  */
+    MUL_ASSIGN = 276,              /* MUL_ASSIGN  */
+    DIV_ASSIGN = 277,              /* DIV_ASSIGN  */
+    MOD_ASSIGN = 278,              /* MOD_ASSIGN  */
+    ADD_ASSIGN = 279,              /* ADD_ASSIGN  */
+    SUB_ASSIGN = 280,              /* SUB_ASSIGN  */
+    LEFT_ASSIGN = 281,             /* LEFT_ASSIGN  */
+    RIGHT_ASSIGN = 282,            /* RIGHT_ASSIGN  */
+    AND_ASSIGN = 283,              /* AND_ASSIGN  */
+    XOR_ASSIGN = 284,              /* XOR_ASSIGN  */
+    OR_ASSIGN = 285,               /* OR_ASSIGN  */
+    TYPEDEF_NAME = 286,            /* TYPEDEF_NAME  */
+    ENUMERATION_CONSTANT = 287,    /* ENUMERATION_CONSTANT  */
+    TYPEDEF = 288,                 /* TYPEDEF  */
+    EXTERN = 289,                  /* EXTERN  */
+    STATIC = 290,                  /* STATIC  */
+    AUTO = 291,                    /* AUTO  */
+    REGISTER = 292,                /* REGISTER  */
+    INLINE = 293,                  /* INLINE  */
+    CONST = 294,                   /* CONST  */
+    RESTRICT = 295,                /* RESTRICT  */
+    VOLATILE = 296,                /* VOLATILE  */
+    _BOOL = 297,                   /* _BOOL  */
+    CHAR = 298,                    /* CHAR  */
+    SHORT = 299,                   /* SHORT  */
+    INT = 300,                     /* INT  */
+    LONG = 301,                    /* LONG  */
+    SIGNED = 302,                  /* SIGNED  */
+    UNSIGNED = 303,                /* UNSIGNED  */
+    FLOAT = 304,                   /* FLOAT  */
+    DOUBLE = 305,                  /* DOUBLE  */
+    VOID = 306,                    /* VOID  */
+    _COMPLEX = 307,                /* _COMPLEX  */
+    _IMAGINARY = 308,              /* _IMAGINARY  */
+    STRUCT = 309,                  /* STRUCT  */
+    UNION = 310,                   /* UNION  */
+    ENUM = 311,                    /* ENUM  */
+    ELLIPSIS = 312,                /* ELLIPSIS  */
+    CASE = 313,                    /* CASE  */
+    DEFAULT = 314,                 /* DEFAULT  */
+    IF = 315,                      /* IF  */
+    ELSE = 316,                    /* ELSE  */
+    SWITCH = 317,                  /* SWITCH  */
+    WHILE = 318,                   /* WHILE  */
+    DO = 319,                      /* DO  */
+    FOR = 320,                     /* FOR  */
+    GOTO = 321,                    /* GOTO  */
+    CONTINUE = 322,                /* CONTINUE  */
+    BREAK = 323,                   /* BREAK  */
+    RETURN = 324,                  /* RETURN  */
+    _ALIGNAS = 325,                /* _ALIGNAS  */
+    _ALIGNOF = 326,                /* _ALIGNOF  */
+    _ATOMIC = 327,                 /* _ATOMIC  */
+    _GENERIC = 328,                /* _GENERIC  */
+    _NORETURN = 329,               /* _NORETURN  */
+    _STATIC_ASSERT = 330,          /* _STATIC_ASSERT  */
+    _THREAD_LOCAL = 331            /* _THREAD_LOCAL  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -136,9 +137,9 @@ extern int yydebug;
 union YYSTYPE
 {
 #line 49 "parserBison.y"
-char* name;
+char* name; char* struct_union_name;
 
-#line 142 "parserBison.tab.h"
+#line 143 "parserBison.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

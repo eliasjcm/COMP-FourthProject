@@ -23,8 +23,8 @@ int customError(const char* str);
 	#define YYLOCATION_PRINT location_print
 }
 
-
 %token 	<name> IDENTIFIER
+%token 	<struct_union_name> STRUCT_ID
 %token	INTEGER_CONSTANT FLOATING_CONSTANT STRING_LITERAL FUNC_NAME SIZEOF
 %token	PTR_OP INC_OP DEC_OP LEFT_OP RIGHT_OP LE_OP GE_OP EQ_OP NE_OP
 %token	AND_OP OR_OP MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN ADD_ASSIGN
@@ -46,7 +46,7 @@ int customError(const char* str);
 %nonassoc ELSE
 
 %start translation_unit
-%union {char* name;}
+%union {char* name; char* struct_union_name;}
 
 %define parse.lac full
 %define parse.error custom
@@ -299,14 +299,14 @@ type_specifier
 
 struct_or_union_specifier
 	: struct_or_union prepare_scope '{' struct_declaration_list '}' finish_scope
-	| struct_or_union IDENTIFIER {save_identifier_struct_union($2);} prepare_scope '{' struct_declaration_list '}' {finish_struct_union();} finish_scope
-	| struct_or_union IDENTIFIER {save_type();}//{save_identifier_struct_union($2);} 
+	| struct_or_union STRUCT_ID {save_identifier_struct_union($2);} prepare_scope '{' struct_declaration_list '}' {finish_struct_union();} //finish_scope
+	| struct_or_union STRUCT_ID {save_identifier_struct_union($2);} 
 	| struct_or_union IDENTIFIER prepare_scope '{' error '}' finish_scope
   	| struct_or_union prepare_scope '{' error '}' finish_scope
 	;
 
 struct_or_union
-	: STRUCT {save_struct();}
+	: STRUCT {save_struct(); typedef_name_flag = 1;}
 	| UNION {save_union();}
 	;
 

@@ -260,6 +260,12 @@ int check_type(void) {
     // else {
     //     return IDENTIFIER;
     // }
-    yylval.name = strdup(yytext);
-    return IDENTIFIER;
+    if (typedef_name_flag == 1) {
+        typedef_name_flag = 0;
+        yylval.struct_union_name = strdup(yytext);
+        return STRUCT_ID;
+    } else {
+        return IDENTIFIER;
+        yylval.name = strdup(yytext);
+    }
 }

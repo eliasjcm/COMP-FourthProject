@@ -58,14 +58,53 @@ void save_union() {
 }
 
 int end_declaration() {
-    SemanticRegister *type_semanticRegister = retrieve(TYPE);
-    if (!type_semanticRegister) {
-        // TODO: No type declared
-        return 0;
-    }
-    char* type = type_semanticRegister->value;
+    int is_struct_union = 0; // 0 for other types, 1 for struct, 2 for union
+    SemanticRegister *type_semanticRegister;
+    // if (!type_semanticRegister) {
+    //     // TODO: No type declared
+    //     return 0;
+    // }
+    char* type;
 
     SemanticRegister *top; 
+    top = get_top_semanticStack();
+
+    while(top != NULL && top->type == SMTYPE_VARIABLE) {
+        if (top->next) {
+            top = top->next;
+        }
+    }
+    if (top) {
+        printf("TOP DESPUES DE LAS VARIABLES: %s\n", top->value);
+    } else {
+        return;
+    }
+
+    if (top->type == SMTYPE_STRUCT_ID) {
+        type = malloc(strlen(top->value) + 15);
+        sprintf(type, "struct %s", top->value);
+        is_struct_union = 1;
+    } else if (top->type == SMTYPE_UNION_ID) {
+        type = malloc(strlen(top->value) + 15);
+        sprintf(type, "union %s", top->value);
+        is_struct_union = 2;
+    } else {
+        type = top->value;
+    }
+    // if ((type_semanticRegister = retrieve(SMTYPE_STRUCT_ID)) != NULL) {
+    //     type = malloc(strlen(type_semanticRegister->value) + 15);
+    //     sprintf(type, "struct %s", type_semanticRegister->value);
+    //     is_struct_union = 1;
+    // } else if ((type_semanticRegister = retrieve(SMTYPE_UNION_ID)) != NULL) {
+    //     SemanticRegister *union_semanticRegister = retrieve(SMTYPE_UNION);
+    //     type = malloc(strlen(type_semanticRegister->value) + 15);
+    //     sprintf(type, "union %s", type_semanticRegister->value);
+    //     is_struct_union = 2;
+    // } else if ((type_semanticRegister = retrieve(TYPE)) != NULL) {
+    //     type = type_semanticRegister->value;
+    // } else {
+    //     return 0;
+    // }
 
     while((top = get_top_semanticStack()) != NULL && top->type == SMTYPE_VARIABLE) {
         if (exists(top->value) == 1) {
@@ -88,6 +127,11 @@ int end_declaration() {
         }
     }
     printf("FIN DECLARACION\n");
+    if (is_struct_union == 1) {
+        pop_semanticRegister();
+    } else if (is_struct_union == 2) {
+        pop_semanticRegister();
+    }
     pop_semanticRegister();
     print_semantic_stack();
     return 1;
@@ -136,6 +180,7 @@ void check_declaration(char* name) {
 }
 
 void save_identifier_struct_union(char* value) {
+    printf("******************** save_identifier_struct_union: %s ****************\n", value);
     SemanticRegister *semantic_register = malloc(sizeof(SemanticRegister));
     if (get_top_semanticStack()->type == SMTYPE_STRUCT) {
         semantic_register->type = SMTYPE_STRUCT_ID;
@@ -267,6 +312,7 @@ void finish_struct_union() {
     }
     pop_symbolTable();
     insert_symbol(new_symbol);
+
     print_semantic_stack();
     print_symboltables();
     printf("END STRUCTTTTTTTTTTTTTT\n");
