@@ -269,7 +269,7 @@ int check_type(void) {
         yylval.struct_union_name = strdup(yytext);
         return STRUCT_ID;
     } else {
-        return IDENTIFIER;
         yylval.name = strdup(yytext);
+        return IDENTIFIER;
     }
 }

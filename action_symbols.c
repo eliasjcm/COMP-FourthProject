@@ -162,6 +162,8 @@ void print_error(char* name, char *line, char* filename, char* error_msg, int li
 }
 
 void check_declaration(char* name) {
+    printf("ALEJANDROOOOOOOOOOOOOOOOO\n");
+    printf("NAME: %s\n", name);
     if (!exists(name)) {
         char *result = strstr(line, name);
         int position = result - line;

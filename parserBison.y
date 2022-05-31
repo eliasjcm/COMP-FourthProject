@@ -239,10 +239,10 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers {printf("-------- SE PUDRIO ESTO BROTHER DE ALEJANDRO\n");}';' // CHECK THIS
-	| declaration_specifiers {printf("--------------ENTRA A DECLARATION SPECIFIERS\n");} init_declarator_list ';' {end_declaration();} 
+	: declaration_specifiers ';' // CHECK THIS
+	| declaration_specifiers  init_declarator_list ';' {end_declaration();} 
 	| _STATIC_ASSERT_declaration
-	| declaration_specifiers error ';' {printf("CULPA DE ALEBEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");}
+	| declaration_specifiers error ';' {/*printf("CULPA DE ALEBEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");*/}
 	;
 
 declaration_specifiers
