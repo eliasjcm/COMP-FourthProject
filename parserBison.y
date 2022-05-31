@@ -45,7 +45,7 @@ int customError(const char* str);
 %nonassoc "then"
 %nonassoc ELSE
 
-%start translation_unit
+%start translation_unit_before
 %union {char* name; char* struct_union_name;}
 
 %define parse.lac full
@@ -239,17 +239,17 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';' // CHECK THIS
-	| declaration_specifiers {/* DONE, ENTRA A TYPE_SPECIFIER */} init_declarator_list ';' {end_declaration();} 
+	: declaration_specifiers {printf("-------- SE PUDRIO ESTO BROTHER DE ALEJANDRO\n");}';' // CHECK THIS
+	| declaration_specifiers {printf("--------------ENTRA A DECLARATION SPECIFIERS\n");} init_declarator_list ';' {end_declaration();} 
 	| _STATIC_ASSERT_declaration
-	| declaration_specifiers error ';'
+	| declaration_specifiers error ';' {printf("CULPA DE ALEBEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");}
 	;
 
 declaration_specifiers
 	: storage_class_specifier declaration_specifiers
 	| storage_class_specifier
-	| type_specifier declaration_specifiers 
 	| type_specifier 
+	| type_specifier declaration_specifiers 
 	| type_qualifier declaration_specifiers
 	| type_qualifier
 	| function_specifier declaration_specifiers
@@ -259,14 +259,14 @@ declaration_specifiers
 	;
 
 init_declarator_list
-	: init_declarator
+	: init_declarator {printf("ENTRA A LA LISTA\n");}
 	| init_declarator_list ',' init_declarator
 	| error ',' init_declarator
 	;
 
 init_declarator
 	: declarator '=' initializer {printf("ABIEL MECO\n");}
-	| declarator
+	| declarator {printf("ESTO ES UN DECLARATOR CULPA MIA\n");}
 	| error '=' initializer {printf("ABIEL MECO2\n");}
 	;
 
@@ -280,7 +280,7 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID {save_type();}
+	: VOID {printf("********************************** VOID\n"); save_type();}
 	| CHAR {save_type();}
 	| SHORT {save_type();}
 	| INT {save_type();}
@@ -592,14 +592,19 @@ jump_statement
 	| RETURN error ';'
 	;
 
+translation_unit_before
+	: prepare_scope translation_unit finish_scope
+	;
+
+
 translation_unit
-	: prepare_scope external_declaration finish_scope
-	| translation_unit  external_declaration 
+	: external_declaration {printf("11111111111111111111111111\n");}
+	| translation_unit  external_declaration {printf("22222222222222222222222222\n");}
 	;
 
 external_declaration
 	: function_definition
-	| declaration
+	| declaration {printf("SE VA CON DECLARATION\n");}
 	;
 
 function_definition

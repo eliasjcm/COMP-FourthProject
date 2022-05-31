@@ -77,7 +77,7 @@ int end_declaration() {
     if (top) {
         printf("TOP DESPUES DE LAS VARIABLES: %s\n", top->value);
     } else {
-        return;
+        return 0;
     }
 
     if (top->type == SMTYPE_STRUCT_ID) {

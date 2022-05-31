@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 18:45:51 2022
+# Make data base, printed on Tue May 31 16:36:03 2022
 
 # Variables
 
@@ -51,13 +51,13 @@ VSCODE_CWD = /mnt/c/Users/Eli02/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/elias/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/c/Program Files/R/R-4.2.0/bin/x64/:/mnt/c/MinGW/bin:/mnt/c/Users/Eli02/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Eli02/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Eli02/AppData/Roaming/npm:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.1/bin:/mnt/c/Users/Eli02/AppData/Local/Programs/MiKTeX/miktex/bin/x64/:/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2021.3.2/bin:/mnt/c/Program Files/mongosh/:/mnt/c/Program Files/heroku/bin:/mnt/c/Program Files/R/R-4.2.0/bin/x64/:/mnt/c/ffmpeg/bin:/snap/bin
+PATH = /home/elias/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/c/Program Files/R/R-4.2.0/bin/x64/:/mnt/c/MinGW/bin:/mnt/c/Users/Eli02/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Eli02/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Eli02/AppData/Roaming/npm:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.1/bin:/mnt/c/Users/Eli02/AppData/Local/Programs/MiKTeX/miktex/bin/x64/:/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2021.3.2/bin:/mnt/c/Program Files/mongosh/:/mnt/c/Program Files/heroku/bin:/mnt/c/ffmpeg/bin:/snap/bin
 # environment
 C_INCLUDE_PATH = /mnt/c/Users/Eli02/OneDrive - Estudiantes ITCR/TEC5/COMP/Proyectos/Proyecto Programado 2/COMP-ThirdProject/includeArg
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-3aab313f-408b-416c-bd07-b6dcfa6c20b3.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-03149af3-c556-485b-8e19-86de70131ec6.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -73,7 +73,7 @@ PWD = /mnt/c/Users/Eli02/OneDrive - Estudiantes ITCR/TEC5/COMP/Proyectos/Proyect
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/737_interop
+WSL_INTEROP = /run/WSL/12_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -83,7 +83,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = elias
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -161,9 +161,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 68, inode 40813871623061608): 48 files, no impossibilities.
+# . (device 46, inode 40813871623061608): 49 files, no impossibilities.
 
-# 48 files, no impossibilities in 1 directories.
+# 49 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -205,7 +205,7 @@ semantic_stack.c:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 00:14:39.5642861
+#  Last modified 2022-05-31 16:34:59.9897758
 #  File has been updated.
 #  Successfully updated.
 
@@ -215,7 +215,7 @@ parserC: scanner.l parserBison.y preprocessor.l parserMain.c preprocessor.c symb
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 3):
 	flex scanner.l
-	bison -d -x --graph --verbose parserBison.y
+	bison -d -t -v parserBison.y
 	flex preprocessor.l
 	gcc -g parserBison.tab.c lex.yy.c preprocessor.c preprocessor.yy.c parserMain.c symboltables.c action_symbols.c semantic_stack.c -o parserC
 
@@ -257,12 +257,12 @@ parserBison.y:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 54 / storage = 844 B / avg = 15 B
-# current buf: size = 8162 B / used = 844 B / count = 54 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 54 / storage = 785 B / avg = 14 B
+# current buf: size = 8162 B / used = 785 B / count = 54 / avg = 14 B
 
-# strcache performance: lookups = 67 / hit rate = 19%
+# strcache performance: lookups = 68 / hit rate = 20%
 # hash-table stats:
-# Load=54/8192=1%, Rehash=0, Collisions=1/67=1%
-# Finished Make data base on Thu May 26 18:45:51 2022
+# Load=54/8192=1%, Rehash=0, Collisions=1/68=1%
+# Finished Make data base on Tue May 31 16:36:03 2022
 
  
