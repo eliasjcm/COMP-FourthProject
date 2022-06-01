@@ -5,7 +5,8 @@
         "type_traits": "c",
         "cmath": "c",
         "limits": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

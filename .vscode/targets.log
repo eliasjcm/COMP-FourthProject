@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 20:36:57 2022
+# Make data base, printed on Tue May 31 20:47:27 2022
 
 # Variables
 
@@ -161,9 +161,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 46, inode 40813871623061608): 23 files, no impossibilities.
+# . (device 46, inode 40813871623061608): 25 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -191,7 +191,7 @@ all:
 #  File has not been updated.
 
 # Not a target:
-action_symbols.c:
+semantic_actions.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -205,11 +205,11 @@ semantic_stack.c:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 20:36:56.3199001
+#  Last modified 2022-05-31 20:47:16.9153581
 #  File has been updated.
 #  Successfully updated.
 
-parserC: scanner.l parserBison.y preprocessor.l parserMain.c preprocessor.c symboltables.c semantic_stack.c action_symbols.c
+parserC: scanner.l parserBison.y preprocessor.l parserMain.c preprocessor.c symboltables.c semantic_stack.c semantic_actions.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -217,7 +217,7 @@ parserC: scanner.l parserBison.y preprocessor.l parserMain.c preprocessor.c symb
 	flex scanner.l
 	bison -d -t parserBison.y
 	flex preprocessor.l
-	gcc -g parserBison.tab.c lex.yy.c preprocessor.c preprocessor.yy.c parserMain.c symboltables.c action_symbols.c semantic_stack.c -o parserC
+	gcc -g parserBison.tab.c lex.yy.c preprocessor.c preprocessor.yy.c parserMain.c symboltables.c semantic_actions.c semantic_stack.c -o parserC
 	rm parserBison.tab.c parserBison.tab.h lex.yy.c preprocessor.yy.c
 
 # Not a target:
@@ -258,12 +258,12 @@ parserBison.y:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 325 B / avg = 11 B
-# current buf: size = 8162 B / used = 325 B / count = 28 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 374 B / avg = 12 B
+# current buf: size = 8162 B / used = 374 B / count = 31 / avg = 12 B
 
-# strcache performance: lookups = 42 / hit rate = 33%
+# strcache performance: lookups = 44 / hit rate = 29%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=1/42=2%
-# Finished Make data base on Tue May 31 20:36:57 2022
+# Load=31/8192=0%, Rehash=0, Collisions=1/44=2%
+# Finished Make data base on Tue May 31 20:47:27 2022
 
  

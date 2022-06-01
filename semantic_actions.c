@@ -1,4 +1,4 @@
-#include "action_symbols.h"
+#include "semantic_actions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -115,7 +115,7 @@ int end_declaration() {
             int position = result - line;   
             // printf("\n//*****//****// Error: Variable %s already declared\n", top->value);
             char* errorMsg = malloc(strlen(top->value) + 100);
-            sprintf(errorMsg, "variable '%s' already declared in this scope", top->value);
+            sprintf(errorMsg, "variable '%s' already declared in this context", top->value);
             print_error(top->value, line, original_filename, errorMsg, yylineno, position);
             pop_semanticRegister();
         } else {    
@@ -196,103 +196,9 @@ void save_identifier_struct_union(char* value) {
     push_semanticRegister(semantic_register);
 }
 
-// void finish_struct_union() {
 
-//     SemanticRegister *top; 
-
-//     // while((top = get_top_semanticStack()) != NULL && top->type == SMTYPE_VARIABLE) {
-//     //     if (exists(top->value) == 1) {
-//     //         char *result = strstr(line, top->value);
-//     //         int position = result - line;   
-//     //         // printf("\n//*****//****// Error: Variable %s already declared\n", top->value);
-//     //         char* errorMsg = malloc(strlen(top->value) + 100);
-//     //         sprintf(errorMsg, "duplicate member '%s'", top->value);
-//     //         print_error(top->value, line, original_filename, errorMsg, yylineno, position);
-//     //         pop_semanticRegister();
-//     //     } else {    
-//     //         Symbol new_symbol;
-//     //         new_symbol.lexeme = malloc(strlen(top->value) + 1);
-//     //         strcpy(new_symbol.lexeme, top->value);
-//     //         new_symbol.type = malloc(strlen(type) + 1);
-//     //         strcpy(new_symbol.type, type);
-//     //         new_symbol.typeST = TYPE_IDENTIFIER;
-//     //         insert_symbol(new_symbol);
-//     //         pop_semanticRegister();
-//     //     }
-//     // }
-//     // printf("FIN DECLARACION\n");
-//     // pop_semanticRegister();
-//     // print_semantic_stack();
-
-//     int i = 0;
-//     printf("START STRUCT\n");
-
-//     while(1) {
-//         SemanticRegister *type_semanticRegister = retrieve(TYPE);
-//             if (!type_semanticRegister) {
-//                 // TODO: No type declared
-//                 break;
-//             }
-//             // char* type = type_semanticRegister->value;
-
-//             SemanticRegister *top; 
-//             top = get_top_semanticStack();
-
-//             while(top->type == SMTYPE_VARIABLE) {
-//                 if (top->next == NULL) {
-//                     break;
-//                 } else {
-//                     top = top->next;
-//                 }
-//             }
-            
-//             // while(top->type == SMTYPE_VARIABLE) {
-//             //     printf("NOOOOOOOOOOOOOOOOOOOO SE PRINTEA\n");
-//             //     if (exists(top->value) == 1) {
-//             //         char *result = strstr(line, top->value);
-//             //         int position = result - line;   
-//             //         // printf("\n//*****//****// Error: Variable %s already declared\n", top->value);
-//             //         char* errorMsg = malloc(strlen(top->value) + 100);
-//             //         sprintf(errorMsg, "variable '%s' already declared in this scope", top->value);
-//             //         print_error(top->value, line, original_filename, errorMsg, yylineno, position);
-//             //         pop_semanticRegister();
-//             //     } else {    
-//             //         Symbol new_symbol;
-//             //         new_symbol.lexeme = malloc(strlen(top->value) + 1);
-//             //         strcpy(new_symbol.lexeme, top->value);
-//             //         new_symbol.type = malloc(strlen(type) + 1);
-//             //         strcpy(new_symbol.type, type);
-//             //         new_symbol.typeST = TYPE_IDENTIFIER;
-//             //         insert_symbol(new_symbol);
-//             //         print_symboltables();
-//             //         pop_semanticRegister();
-//             //         printf("NO APARECEEEEEEEEEEEEEEEEE\n");
-//             //     }
-//             //     if (top->next == NULL) {
-//             //         break;
-//             //     }
-//             //     top = top->next;
-//             // }
-//             if (!top) return;
-//             printf("FIN DECLARACION\n");
-//             pop_semanticRegister();
-//             print_semantic_stack();
-//     }
-//     printf("END STRUCT\n");
-//     print_symboltables();
-// }
 
 void finish_struct_union() {
-    // printf("INIT STRUCTTTTTTTTTTT\n");
-    //     print_semantic_stack();
-    // print_symboltables();
-
-    // SemanticRegister *top; 
-    // top = get_top_semanticStack();
-    // while (top != NULL && top->type == SMTYPE_VARIABLE) {
-    //     end_declaration();
-    //     top = get_top_semanticStack();
-    // }
     SemanticRegister *id_semanticRegister = get_top_semanticStack();
     Symbol new_symbol;
     if (id_semanticRegister->type == SMTYPE_STRUCT_ID) {
@@ -316,8 +222,4 @@ void finish_struct_union() {
     }
     pop_symbolTable();
     insert_symbol(new_symbol);
-
-    // print_semantic_stack();
-    // print_symboltables();
-    // printf("END STRUCTTTTTTTTTTTTTT\n");
 }

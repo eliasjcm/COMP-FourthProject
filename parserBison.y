@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "globals.h"
-#include "action_symbols.h"
+#include "semantic_actions.h"
 extern int yylex();
 int yyerror();
 extern int yylineno; // borrar
@@ -518,12 +518,22 @@ _STATIC_ASSERT_declaration
 
 statement
 	: labeled_statement
-	| compound_statement
+	| compound_statement_iter
 	| expression_statement
 	| selection_statement
 	| prepare_scope iteration_statement finish_scope
 	| jump_statement
 	;
+
+inside_iter_statement
+	: labeled_statement
+	| compound_statement_iter
+	| expression_statement
+	| selection_statement
+	| prepare_scope iteration_statement finish_scope
+	| jump_statement
+	;
+
 
 labeled_statement
 	: IDENTIFIER ':' statement /* NOT USE, GO TO */
@@ -544,6 +554,12 @@ compound_statement
 	: prepare_scope '{' '}' finish_scope
 	| prepare_scope '{' block_item_list '}' finish_scope
 	| prepare_scope '{' error '}' finish_scope
+	;
+
+compound_statement_iter
+	: '{' '}' 
+	| '{' block_item_list '}'
+	| '{' error '}'
 	;
 
 
@@ -573,14 +589,14 @@ selection_statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement  
-	| DO statement WHILE '(' expression ')' ';' 
-	| FOR '(' expression_statement expression_statement ')' statement 
-	| FOR '(' expression_statement expression_statement expression ')' statement 
-	| FOR '(' declaration expression_statement ')' statement 
-	| FOR '(' declaration expression_statement expression ')' statement 
+	: WHILE '(' expression ')' inside_iter_statement  
+	| DO statement  WHILE '(' expression ')' ';' 
+	| FOR '(' expression_statement expression_statement ')' inside_iter_statement 
+	| FOR '(' expression_statement expression_statement expression ')'  inside_iter_statement 
+	| FOR '(' declaration expression_statement ')' inside_iter_statement 
+	| FOR '(' declaration expression_statement expression ')'  inside_iter_statement 
 	| DO error WHILE '(' expression ')' ';'  
-  	| FOR '(' error ')' statement  
+  	| FOR '(' error ')' inside_iter_statement  
 	;
 
 jump_statement
