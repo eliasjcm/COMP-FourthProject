@@ -56,7 +56,7 @@ int customError(const char* str);
 %%
 
 primary_expression
-	: IDENTIFIER {printf("USING IDENTIFIER\n"); check_declaration($1);}
+	: IDENTIFIER {check_declaration($1);}
 	| constant
 	| string
 	| '(' expression ')'
@@ -259,7 +259,7 @@ declaration_specifiers
 	;
 
 init_declarator_list
-	: init_declarator {printf("ENTRA A LA LISTA\n");}
+	: init_declarator {/*printf("ENTRA A LA LISTA\n");*/}
 	| init_declarator_list ',' init_declarator
 	| error ',' init_declarator
 	;

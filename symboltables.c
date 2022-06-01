@@ -156,7 +156,7 @@ void pop_symbolTable() {
 void print_symboltables() {
     SymbolTable *aux = symboltables_stack.top;
     if (aux) {
-        printf("\n\033[0;35m********************\033[0m \033[1;36mSymbol Table #%d\033[0m \033[0;35m*********************\033[0m\n\n", count);
+        printf("\n\033[0;35m********************\033[0m \033[1;36mSymbol Table - Level #%d\033[0m \033[0;35m*********************\033[0m\n\n", symboltables_stack.size);
         for (int i = 0; i < aux->nullsym; i++) {
             // printf("%s -> %d\n", aux->symbols[i].lexeme, aux->symbols[i].typeST);
             if (aux->symbols[i].typeST) {
@@ -170,7 +170,7 @@ void print_symboltables() {
             }
         }
 
-        printf("\n\033[0;35m**********************************************************\033[0m\n");        
+        printf("\n\033[0;35m******************************************************************\033[0m\n\n");        
     } else {
         printf("\033[1;31merror: No Symbol Table at top of stack\033[0m\n");
     }

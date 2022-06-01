@@ -64,6 +64,13 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     strcpy(fileName, argv[optind]);
+    if (argv[optind + 1] != NULL) {
+        fprintf(stderr, "Too many arguments. Please, provide only one filename.\n\n");
+        fprintf(stderr, 
+                usageInfo,
+                argv[0]);
+        exit(EXIT_FAILURE);
+    }
     original_filename = malloc(strlen(fileName) + 1);
     // printf("ERROR");
     strcpy(original_filename, fileName);

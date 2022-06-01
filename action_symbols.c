@@ -33,7 +33,7 @@ void save_type() {
     semantic_register->value = malloc(strlen(yytext) + 1);
     strcpy(semantic_register->value, yytext);     
     push_semanticRegister(semantic_register);
-    print_semantic_stack();
+    // print_semantic_stack();
 }
 
 void save_id() {
@@ -42,7 +42,7 @@ void save_id() {
     semantic_register->value = malloc(strlen(yytext) + 1);
     strcpy(semantic_register->value, yytext);
     push_semanticRegister(semantic_register);
-    print_semantic_stack();
+    // print_semantic_stack();
 }
 
 void save_struct() {
@@ -78,7 +78,7 @@ int end_declaration() {
         }
     }
     if (top) {
-        printf("TOP DESPUES DE LAS VARIABLES: %s\n", top->value);
+        // printf("TOP DESPUES DE LAS VARIABLES: %s\n", top->value);
     } else {
         return 0;
     }
@@ -129,19 +129,19 @@ int end_declaration() {
             pop_semanticRegister();
         }
     }
-    printf("FIN DECLARACION\n");
+    // printf("FIN DECLARACION\n");
     if (is_struct_union == 1) {
         pop_semanticRegister();
     } else if (is_struct_union == 2) {
         pop_semanticRegister();
     }
     pop_semanticRegister();
-    print_semantic_stack();
+    // print_semantic_stack();
     return 1;
 }
 
 void print_error(char* name, char *line, char* filename, char* error_msg, int line_number, int column) {
-    printf ("\033[1;33m%s:%d:%d\033[0m ", filename, line_number, column);
+    printf("\033[1;33m%s:%d:%d\033[0m ", filename, line_number, column);
     printf("\033[1;31merror:\033[0m %s\n", error_msg);
 
     if (line != NULL) {
@@ -165,8 +165,7 @@ void print_error(char* name, char *line, char* filename, char* error_msg, int li
 }
 
 void check_declaration(char* name) {
-    printf("ALEJANDROOOOOOOOOOOOOOOOO\n");
-    printf("NAME: %s\n", name);
+    // printf("NAME: %s\n", name);
     if (!exists(name)) {
         char *result = strstr(line, name);
         int position = result - line;
@@ -185,7 +184,7 @@ void check_declaration(char* name) {
 }
 
 void save_identifier_struct_union(char* value) {
-    printf("******************** save_identifier_struct_union: %s ****************\n", value);
+    // printf("******************** save_identifier_struct_union: %s ****************\n", value);
     SemanticRegister *semantic_register = malloc(sizeof(SemanticRegister));
     if (get_top_semanticStack()->type == SMTYPE_STRUCT) {
         semantic_register->type = SMTYPE_STRUCT_ID;

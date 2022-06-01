@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 16:36:03 2022
+# Make data base, printed on Tue May 31 20:36:57 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = elias
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -161,9 +161,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 46, inode 40813871623061608): 49 files, no impossibilities.
+# . (device 46, inode 40813871623061608): 23 files, no impossibilities.
 
-# 49 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -205,7 +205,7 @@ semantic_stack.c:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 16:34:59.9897758
+#  Last modified 2022-05-31 20:36:56.3199001
 #  File has been updated.
 #  Successfully updated.
 
@@ -215,9 +215,10 @@ parserC: scanner.l parserBison.y preprocessor.l parserMain.c preprocessor.c symb
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 3):
 	flex scanner.l
-	bison -d -t -v parserBison.y
+	bison -d -t parserBison.y
 	flex preprocessor.l
 	gcc -g parserBison.tab.c lex.yy.c preprocessor.c preprocessor.yy.c parserMain.c symboltables.c action_symbols.c semantic_stack.c -o parserC
+	rm parserBison.tab.c parserBison.tab.h lex.yy.c preprocessor.yy.c
 
 # Not a target:
 parserMain.c:
@@ -257,12 +258,12 @@ parserBison.y:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 54 / storage = 785 B / avg = 14 B
-# current buf: size = 8162 B / used = 785 B / count = 54 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 325 B / avg = 11 B
+# current buf: size = 8162 B / used = 325 B / count = 28 / avg = 11 B
 
-# strcache performance: lookups = 68 / hit rate = 20%
+# strcache performance: lookups = 42 / hit rate = 33%
 # hash-table stats:
-# Load=54/8192=1%, Rehash=0, Collisions=1/68=1%
-# Finished Make data base on Tue May 31 16:36:03 2022
+# Load=28/8192=0%, Rehash=0, Collisions=1/42=2%
+# Finished Make data base on Tue May 31 20:36:57 2022
 
  
