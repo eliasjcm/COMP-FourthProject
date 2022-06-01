@@ -161,9 +161,9 @@ void print_symboltables() {
             // printf("%s -> %d\n", aux->symbols[i].lexeme, aux->symbols[i].typeST);
             if (aux->symbols[i].typeST) {
                 if (aux->symbols[i].typeST == TYPE_STRUCT) {
-                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[1;36mstruct identifier\033[0m", aux->symbols[i].lexeme);
+                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[1;36mstruct identifier\033[0m\n", aux->symbols[i].lexeme);
                 } else if (aux->symbols[i].typeST == TYPE_UNION) {
-                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[4;36munion identifier\033[0m", aux->symbols[i].lexeme);
+                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[4;36munion identifier\033[0m\n", aux->symbols[i].lexeme);
                 }
             } else {
                 printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m variable of type \033[4;34m%s\033[0m\n", aux->symbols[i].lexeme, aux->symbols[i].type);
