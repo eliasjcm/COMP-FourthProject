@@ -211,7 +211,7 @@ conditional_expression
 
 assignment_expression
 	: conditional_expression
-	| unary_expression assignment_operator assignment_expression {printf("ABIEL TODAVIA MAS MECO3\n");}
+	| unary_expression assignment_operator assignment_expression
 	| error ';'
 	;
 
@@ -242,7 +242,7 @@ declaration
 	: declaration_specifiers ';' // CHECK THIS
 	| declaration_specifiers  init_declarator_list ';' {end_declaration();} 
 	| _STATIC_ASSERT_declaration
-	| declaration_specifiers error ';' {/*printf("CULPA DE ALEBEEEEEEEEEEEEEEEEEEEEEEEEEEE\n");*/}
+	| declaration_specifiers error ';'
 	;
 
 declaration_specifiers
@@ -265,9 +265,9 @@ init_declarator_list
 	;
 
 init_declarator
-	: declarator '=' initializer {printf("ABIEL MECO\n");}
-	| declarator {printf("ESTO ES UN DECLARATOR CULPA MIA\n");}
-	| error '=' initializer {printf("ABIEL MECO2\n");}
+	: declarator '=' initializer_list
+	| declarator
+	| error '=' initializer
 	;
 
 storage_class_specifier
@@ -280,7 +280,7 @@ storage_class_specifier
 	;
 
 type_specifier
-	: VOID {printf("********************************** VOID\n"); save_type();}
+	: VOID {save_type();}
 	| CHAR {save_type();}
 	| SHORT {save_type();}
 	| INT {save_type();}
@@ -359,9 +359,9 @@ enumerator_list
 	;
 
 enumerator
-	: enumeration_constant '=' {printf("ABIEL MECO\n");} constant_expression
+	: enumeration_constant '=' constant_expression
 	| enumeration_constant
-	| error '=' constant_expression  {printf("ABIEL MECO\n");}
+	| error '=' constant_expression
 	;
 	
 type_qualifier
@@ -499,7 +499,7 @@ initializer_list
 	;
 
 designation
-	: designator_list '='  {printf("ABIEL MECO\n");}
+	: designator_list '='
 	;
 
 designator_list
@@ -573,14 +573,14 @@ selection_statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement {printf("Hola1\n");} 
-	| DO statement WHILE '(' expression ')' ';' {printf("Hola2\n");}
-	| FOR '(' expression_statement expression_statement ')' statement {printf("Hola3\n");}
-	| FOR '(' expression_statement expression_statement expression ')' statement {printf("Hola4\n");}
-	| FOR '(' declaration expression_statement ')' statement {printf("Hola5\n");}
-	| FOR '(' declaration expression_statement expression ')' statement {printf("Hola6\n");}
-	| DO error WHILE '(' expression ')' ';'  {printf("Hola7\n");}
-  	| FOR '(' error ')' statement  {printf("Hola8\n");}
+	: WHILE '(' expression ')' statement  
+	| DO statement WHILE '(' expression ')' ';' 
+	| FOR '(' expression_statement expression_statement ')' statement 
+	| FOR '(' expression_statement expression_statement expression ')' statement 
+	| FOR '(' declaration expression_statement ')' statement 
+	| FOR '(' declaration expression_statement expression ')' statement 
+	| DO error WHILE '(' expression ')' ';'  
+  	| FOR '(' error ')' statement  
 	;
 
 jump_statement
@@ -598,13 +598,13 @@ translation_unit_before
 
 
 translation_unit
-	: external_declaration {printf("11111111111111111111111111\n");}
-	| translation_unit  external_declaration {printf("22222222222222222222222222\n");}
+	: external_declaration 
+	| translation_unit  external_declaration
 	;
 
 external_declaration
 	: function_definition
-	| declaration {printf("SE VA CON DECLARATION\n");}
+	| declaration
 	;
 
 function_definition

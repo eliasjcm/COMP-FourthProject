@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 
+extern int depth;
+int count = 1;
+
 // void semantic_stack_init() {
 //     semantic_stack.size = 0;
 //     semantic_stack.top = NULL;
@@ -152,21 +155,26 @@ void pop_symbolTable() {
 
 void print_symboltables() {
     SymbolTable *aux = symboltables_stack.top;
-    int count = 1;
-    printf("\n\t\tSymbol Tables Stack\n----------------------------------------------\n\n");
-    while (aux) {
-        // printf("Symbol Table #%d\n", count);
-        printf("\n********** Symbol Table #%d **********\n\n", count);
+    if (aux) {
+        printf("\n\033[0;35m********************\033[0m \033[1;36mSymbol Table #%d\033[0m \033[0;35m*********************\033[0m\n\n", count);
         for (int i = 0; i < aux->nullsym; i++) {
             // printf("%s -> %d\n", aux->symbols[i].lexeme, aux->symbols[i].typeST);
-            printf("%s -> %s\n", aux->symbols[i].lexeme, aux->symbols[i].type);
+            if (aux->symbols[i].typeST) {
+                if (aux->symbols[i].typeST == TYPE_STRUCT) {
+                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[1;36mstruct identifier\033[0m", aux->symbols[i].lexeme);
+                } else if (aux->symbols[i].typeST == TYPE_UNION) {
+                    printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m \033[4;36munion identifier\033[0m", aux->symbols[i].lexeme);
+                }
+            } else {
+                printf("\t\033[3;33m%s\033[0m \033[1;32m→\033[0m variable of type \033[4;34m%s\033[0m\n", aux->symbols[i].lexeme, aux->symbols[i].type);
+            }
         }
-        printf("\n**************************************\n");
-        // printf("Length: %d. Max size: %d \n", aux->nullsym, aux->size);   
-        aux = aux->next;
-        count++;
+
+        printf("\n\033[0;35m**********************************************************\033[0m\n");        
+    } else {
+        printf("\033[1;31merror: No Symbol Table at top of stack\033[0m\n");
     }
-    printf("\n----------------------------------------------\n");
+    count++;
 }
 
 

@@ -9,16 +9,19 @@ extern int yylineno;
 extern int yyleng;
 extern char* original_filename;
 extern void resetColor();
+int depth = 1;
 
 
 void print_error(char* name, char *line, char* filename, char* error_msg, int line_number, int column);
 
 void open_scope() {
+    depth++;
     SymbolTable *symbol_table = Create_ST();
     push_symbolTable(symbol_table);
 }
 
 void close_scope() {
+    depth--;
     pop_symbolTable();
 }
 
@@ -281,9 +284,9 @@ void save_identifier_struct_union(char* value) {
 // }
 
 void finish_struct_union() {
-    printf("INIT STRUCTTTTTTTTTTT\n");
-        print_semantic_stack();
-    print_symboltables();
+    // printf("INIT STRUCTTTTTTTTTTT\n");
+    //     print_semantic_stack();
+    // print_symboltables();
 
     // SemanticRegister *top; 
     // top = get_top_semanticStack();
@@ -315,7 +318,7 @@ void finish_struct_union() {
     pop_symbolTable();
     insert_symbol(new_symbol);
 
-    print_semantic_stack();
-    print_symboltables();
-    printf("END STRUCTTTTTTTTTTTTTT\n");
+    // print_semantic_stack();
+    // print_symboltables();
+    // printf("END STRUCTTTTTTTTTTTTTT\n");
 }
